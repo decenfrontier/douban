@@ -4,18 +4,33 @@ class StarRating extends StatefulWidget {
   final double rating;
   final double maxRating;
   final int count;
-  final double size;  // 每个图形的宽高
+  final double size; // 每个图形的宽高
   final Color unselectedColor;
   final Color selectedColor;
+  final Widget unselectedImage;
+  final Widget selectedImage;
 
-  StarRating({
-    required this.rating,
-    this.maxRating=10,
-    this.count=5,
-    this.size=30,
-    this.unselectedColor=const Color(0xffbbbbbb),
-    this.selectedColor=Colors.orange,
-  });
+  StarRating(
+      {required this.rating,
+      this.maxRating = 10,
+      this.count = 5,
+      this.size = 30,
+      this.unselectedColor = const Color(0xffbbbbbb),
+      this.selectedColor = Colors.orange,
+      Widget? unselectedImage,
+      Widget? selectedImage})
+      : this.unselectedImage = unselectedImage ??
+            Icon(
+              Icons.star,
+              color: unselectedColor,
+              size: size,
+            ),
+        this.selectedImage = selectedImage ??
+            Icon(
+              Icons.star,
+              color: selectedColor,
+              size: size,
+            );
 
   @override
   State<StarRating> createState() => _StarRatingState();
@@ -46,7 +61,11 @@ class _StarRatingState extends State<StarRating> {
     double oneValue = widget.maxRating / widget.count;
     // 填充整星
     int entireCount = (widget.rating / oneValue).floor();
-    final star = Icon(Icons.star, color: widget.selectedColor, size: widget.size,);
+    final star = Icon(
+      Icons.star,
+      color: widget.selectedColor,
+      size: widget.size,
+    );
     for (var i = 0; i < entireCount; i++) {
       stars.add(star);
     }
@@ -63,8 +82,9 @@ class _StarRatingState extends State<StarRating> {
 
   List<Widget> buildUnselectedStar() {
     return List.generate(widget.count, (index) {
-          return Icon(Icons.star_border, color: widget.unselectedColor, size: widget.size);
-        });
+      return Icon(Icons.star_border,
+          color: widget.unselectedColor, size: widget.size);
+    });
   }
 }
 
