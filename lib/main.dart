@@ -1,4 +1,4 @@
-import 'package:douban/widgets/star_rating.dart';
+import 'package:douban/widgets/dash_line.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -15,7 +15,15 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: StarRating(rating: 11),
+      home: Scaffold(
+          body: Center(
+        child: Container(
+          width: 200,
+          child: DashedLine(
+            count: 20,
+          ),
+        ),
+      )),
       debugShowCheckedModeBanner: false,
     );
   }
