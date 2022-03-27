@@ -77,6 +77,10 @@ class _StarRatingState extends State<StarRating> {
       clipper: StarClipper(leftSize),
     );
     stars.add(part);
+    // 边界判断
+    if (stars.length > widget.count) {
+      return stars.sublist(0, widget.count);
+    }
     return stars;
   }
 

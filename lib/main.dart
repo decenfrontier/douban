@@ -15,7 +15,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: StarRating(rating: 5),
+      home: StarRating(rating: 11),
       debugShowCheckedModeBanner: false,
     );
   }
