@@ -1,4 +1,3 @@
-import 'package:douban/pages/home/home.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -21,20 +20,45 @@ class MyApp extends StatelessWidget {
   }
 }
 
-class MyHomePage extends StatefulWidget {
-  const MyHomePage({Key? key}) : super(key: key);
+class MainPage extends StatefulWidget {
+  const MainPage({Key? key}) : super(key: key);
 
   @override
-  State<MyHomePage> createState() => _MyHomePageState();
+  State<MainPage> createState() => _MainPageState();
 }
 
-class _MyHomePageState extends State<MyHomePage> {
-
+class _MainPageState extends State<MainPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text("豆瓣App"),),
-      body: Text("hello"),
+      body: IndexedStack(
+        index: 0,
+        children: [],
+      ),
+      bottomNavigationBar: BottomNavigationBar(
+        type: BottomNavigationBarType.fixed, // 显示文字
+        items: [
+          buildBottomNavigationBarItem("首页", "home"),
+          buildBottomNavigationBarItem("书影音", "subject"),
+          buildBottomNavigationBarItem("小组", "group"),
+          buildBottomNavigationBarItem("市集", "mall"),
+          buildBottomNavigationBarItem("我的", "profile"),
+        ],
+      ),
+    );
+  }
+
+  BottomNavigationBarItem buildBottomNavigationBarItem(String title, name) {
+    return BottomNavigationBarItem(
+      label: title,
+      icon: Image.asset(
+        "assets/images/tabbar/$name.png",
+        width: 30,
+      ),
+      activeIcon: Image.asset(
+        "assets/images/tabbar/${name}_active.png",
+        width: 30,
+      ),
     );
   }
 }
