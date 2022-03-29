@@ -1,3 +1,4 @@
+import 'package:douban/pages/home/home.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -12,7 +13,9 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Flutter Demo',
       theme: ThemeData(
-        primarySwatch: Colors.blue,
+        primarySwatch: Colors.green, // 主题色
+        splashColor: Colors.transparent,
+        highlightColor: Colors.transparent, // 按下时的水波纹
       ),
       home: MainPage(),
       debugShowCheckedModeBanner: false,
@@ -28,15 +31,25 @@ class MainPage extends StatefulWidget {
 }
 
 class _MainPageState extends State<MainPage> {
+  int _cur_idx = 0;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: IndexedStack(
-        index: 0,
-        children: [],
+        index: _cur_idx,
+        children: [
+          HomePage(),
+        ],
       ),
       bottomNavigationBar: BottomNavigationBar(
-        type: BottomNavigationBarType.fixed, // 显示文字
+        currentIndex: _cur_idx,
+        selectedFontSize: 13,
+        // 选中项字体大小
+        unselectedFontSize: 13,
+        // 未选中项字体大小
+        type: BottomNavigationBarType.fixed,
+        // 显示文字
         items: [
           buildBottomNavigationBarItem("首页", "home"),
           buildBottomNavigationBarItem("书影音", "subject"),
@@ -44,6 +57,11 @@ class _MainPageState extends State<MainPage> {
           buildBottomNavigationBarItem("市集", "mall"),
           buildBottomNavigationBarItem("我的", "profile"),
         ],
+        onTap: (index) {
+          setState(() {
+            _cur_idx = index;
+          });
+        },
       ),
     );
   }
