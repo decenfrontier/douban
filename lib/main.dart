@@ -1,4 +1,8 @@
+import 'package:douban/pages/group/group.dart';
 import 'package:douban/pages/home/home.dart';
+import 'package:douban/pages/mall/mall.dart';
+import 'package:douban/pages/profile/profile.dart';
+import 'package:douban/pages/subject/subject.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -40,6 +44,10 @@ class _MainPageState extends State<MainPage> {
         index: _cur_idx,
         children: [
           HomePage(),
+          SubjectPage(),
+          GroupPage(),
+          MallPage(),
+          ProfilePage(),
         ],
       ),
       bottomNavigationBar: BottomNavigationBar(
