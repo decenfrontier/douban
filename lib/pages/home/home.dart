@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+import '../../models/home_models.dart';
 import '../../network/home_request.dart';
 
 class HomePage extends StatelessWidget {
@@ -24,10 +25,18 @@ class HomeContent extends StatefulWidget {
 }
 
 class _HomeContentState extends State<HomeContent> {
+  HomeRequest homeRequest = HomeRequest();
+  int _start = 0;
+  List<MovieItem> movies = [];
+
   @override
   void initState() {
     super.initState();
-    HomeRequest.requestMovieList(0);
+    homeRequest.getMovieTopList(_start).then((result) {
+      setState(() {
+        movies.addAll(result);
+      });
+    });
   }
 
   @override

@@ -3,8 +3,9 @@ import 'package:douban/models/home_models.dart';
 import 'http_request.dart';
 
 class HomeRequest {
-  static void requestMovieList(int start) async {
-    const movieURL = "http://101.42.134.18:8080/movie_list";
+  Future<List<MovieItem>> getMovieTopList(int start) async {
+    String movieURL = "/movie_list";
+    // 发送请求
     final result = await HttpRequest.request(movieURL);
     final subjects = result['subjects'];
     // 将map转为model
@@ -12,6 +13,6 @@ class HomeRequest {
     for (var sub in subjects) {
       movies.add(MovieItem.fromMap(sub));
     }
-    print(movies);
+    return movies;
   }
 }

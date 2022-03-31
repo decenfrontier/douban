@@ -1,8 +1,9 @@
 class Person {
-  late String name;
-  late String avatarURL;
+  String? name;
+  String? avatarURL;
 
   Person.fromMap(Map<String, dynamic> json) {
+    print("fromMap:$json");
     this.name = json["name"];
     this.avatarURL = json["avatars"]["medium"];
   }
@@ -19,17 +20,18 @@ class Director extends Person {
 int counter = 1;
 
 class MovieItem {
-  late int rank;
-  late String imageURL;
-  late String title;
-  late String playDate;
-  late double rating;
-  late List<String> genres;
-  late List<Actor> casts;
-  late Director director;
-  late String originalTitle;
+  int? rank;
+  String? imageURL;
+  String? title;
+  String? playDate;
+  double? rating;
+  List<String>? genres;
+  List<Actor>? casts;
+  Director? director;
+  String? originalTitle;
 
   MovieItem.fromMap(Map<String, dynamic> json) {
+    print("MovieItem.fromMap:$json");
     this.rank = counter++;
     this.imageURL = json["images"]["medium"];
     this.title = json["title"];
