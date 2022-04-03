@@ -81,22 +81,21 @@ class HomeMovieItem extends StatelessWidget {
 
   // 内容-信息-标题
   Widget buildContentInfoTitle() {
-    return Row(
-      children: [
-        Icon(
-          Icons.play_circle_outline,
-          color: Colors.redAccent,
-          size: 24,
-        ),
-        Text(
-          "${movieItem.title}",
-          style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
-        ),
-        Text(
-          "(${movieItem.playDate})",
-          style: TextStyle(color: Color(0xFF666666)),
-        ),
-      ],
-    );
+    return Text.rich(TextSpan(children: [
+      WidgetSpan(
+          child: Icon(
+        Icons.play_circle_outline,
+        color: Colors.redAccent,
+        size: 24,
+      )),
+      TextSpan(
+        text: "${movieItem.title}",
+        style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
+      ),
+      TextSpan(
+        text: "(${movieItem.playDate})",
+        style: TextStyle(color: Color(0xFF666666)),
+      ),
+    ]));
   }
 }
