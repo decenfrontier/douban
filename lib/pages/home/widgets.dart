@@ -103,19 +103,27 @@ class HomeMovieItem extends StatelessWidget {
   Widget buildContentInfoTitle() {
     return Text.rich(TextSpan(children: [
       WidgetSpan(
+          // baseline: TextBaseline.ideographic,
+          alignment: PlaceholderAlignment.middle,
           child: Icon(
             Icons.play_circle_outline,
             color: Colors.redAccent,
             size: 24,
           )),
-      TextSpan(
-        text: "${movieItem.title}",
-        style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
+      WidgetSpan(
+        alignment: PlaceholderAlignment.middle,
+        child: Text(
+          "${movieItem.title}",
+          style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
+        ),
       ),
-      TextSpan(
-        text: "(${movieItem.playDate})",
-        style: TextStyle(color: Color(0xFF666666)),
-      ),
+      WidgetSpan(
+        alignment: PlaceholderAlignment.middle,
+        child: Text(
+          "(${movieItem.playDate})",
+          style: TextStyle(color: Color(0xFF666666)),
+        ),
+      )
     ]));
   }
 
