@@ -13,7 +13,7 @@ class HomeMovieItem extends StatelessWidget {
       padding: EdgeInsets.all(8),
       decoration: BoxDecoration(
           border:
-          Border(bottom: BorderSide(width: 8, color: Color(0xffdddddd)))),
+              Border(bottom: BorderSide(width: 8, color: Color(0xffdddddd)))),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
@@ -73,7 +73,8 @@ class HomeMovieItem extends StatelessWidget {
 
   // 内容-信息
   Widget buildContentInfo() {
-    return Column(
+    return Expanded(
+        child: Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         buildContentInfoTitle(),
@@ -81,8 +82,12 @@ class HomeMovieItem extends StatelessWidget {
           height: 8,
         ),
         buildContentInfoRating(),
+        SizedBox(
+          height: 8,
+        ),
+        buildContentInfoDesc(),
       ],
-    );
+    ));
   }
 
   // 内容-信息-标题
@@ -120,6 +125,19 @@ class HomeMovieItem extends StatelessWidget {
         ),
         Text("${movieItem.rating}"),
       ],
+    );
+  }
+
+  // 内容-信息-描述
+  Widget buildContentInfoDesc() {
+    final generes = movieItem.genres!.join(" ");
+    final directors = movieItem.director!.name;
+    final actors = movieItem.casts!.map((e) => e.name).toList().join(" ");
+
+    return Text(
+      "$generes / $directors / $actors",
+      maxLines: 2,
+      overflow: TextOverflow.ellipsis,
     );
   }
 }
