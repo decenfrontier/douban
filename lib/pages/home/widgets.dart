@@ -61,6 +61,10 @@ class HomeMovieItem extends StatelessWidget {
           width: 8,
         ),
         buildContentLine(),
+        SizedBox(
+          width: 8,
+        ),
+        buildContentWish(),
       ],
     );
   }
@@ -155,6 +159,26 @@ class HomeMovieItem extends StatelessWidget {
         dashedWidth: 1,
         dashedHeight: 4,
         count: 15,
+      ),
+    );
+  }
+
+  // 内容-想看
+  Widget buildContentWish() {
+    return Container(
+      height: 100,
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          Image.asset(
+            "assets/images/home/wish.png",
+            height: 40,
+          ),
+          Text(
+            "想看",
+            style: TextStyle(fontSize: 16, color: Colors.orangeAccent),
+          )
+        ],
       ),
     );
   }
