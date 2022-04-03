@@ -3,7 +3,6 @@ class Person {
   String? avatarURL;
 
   Person.fromMap(Map<String, dynamic> json) {
-    print("fromMap:$json");
     this.name = json["name"];
     this.avatarURL = json["avatars"]["medium"];
   }
@@ -31,7 +30,6 @@ class MovieItem {
   String? originalTitle;
 
   MovieItem.fromMap(Map<String, dynamic> json) {
-    print("MovieItem.fromMap:$json");
     this.rank = counter++;
     this.imageURL = json["images"]["medium"];
     this.title = json["title"];

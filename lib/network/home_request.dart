@@ -3,6 +3,7 @@ import 'package:douban/models/home_models.dart';
 import 'http_request.dart';
 
 class HomeRequest {
+  // 获取电影top列表
   Future<List<MovieItem>> getMovieTopList(int start) async {
     String movieURL = "/movie_list";
     // 发送请求

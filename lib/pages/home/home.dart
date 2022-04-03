@@ -1,3 +1,4 @@
+import 'package:douban/pages/home/widgets.dart';
 import 'package:flutter/material.dart';
 
 import '../../models/home_models.dart';
@@ -44,9 +45,8 @@ class _HomeContentState extends State<HomeContent> {
     return ListView.builder(
       itemCount: movies.length,
       itemBuilder: (ctx, index) {
-        return ListTile(
-          title: Text("${movies[index].title}"),
-          leading: Image.network("${movies[index].imageURL}"),
+        return HomeMovieItem(
+          movieItem: movies[index],
         );
       },
     );
