@@ -17,7 +17,13 @@ class HomeMovieItem extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           buildHeader(),
-          Text("222"),
+          SizedBox(
+            height: 4,
+          ),
+          buildContent(),
+          SizedBox(
+            height: 4,
+          ),
           Text("333"),
         ],
       ),
@@ -36,6 +42,61 @@ class HomeMovieItem extends StatelessWidget {
         "No.${movieItem.rank}",
         style: TextStyle(fontSize: 14, color: Color.fromARGB(255, 131, 95, 36)),
       ),
+    );
+  }
+
+  // 内容
+  Widget buildContent() {
+    return Row(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        buildContentImage(),
+        SizedBox(
+          width: 8,
+        ),
+        buildContentInfo(),
+      ],
+    );
+  }
+
+  // 内容-图片
+  Widget buildContentImage() {
+    return ClipRRect(
+      child: Image.network(
+        movieItem.imageURL!,
+        height: 150,
+      ),
+      borderRadius: BorderRadius.circular(6),
+    );
+  }
+
+  // 内容-信息
+  Widget buildContentInfo() {
+    return Column(
+      children: [
+        buildContentInfoTitle(),
+      ],
+    );
+  }
+
+  // 内容-信息-标题
+  Widget buildContentInfoTitle() {
+    return Row(
+      children: [
+        Icon(
+          Icons.play_circle_outline,
+          color: Colors.redAccent,
+          size: 24,
+        ),
+        Text(
+          "${movieItem.title}",
+          style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
+        ),
+        Text(
+          "(${movieItem.playDate})",
+          style: TextStyle(color: Color(0xFF666666)),
+        ),
+      ],
     );
   }
 }
