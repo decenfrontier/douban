@@ -80,10 +80,12 @@ class _MainPageState extends State<MainPage> {
       icon: Image.asset(
         "assets/images/tabbar/$name.png",
         width: 30,
+        gaplessPlayback: true,
       ),
       activeIcon: Image.asset(
         "assets/images/tabbar/${name}_active.png",
         width: 30,
+        gaplessPlayback: true,
       ),
     );
   }
