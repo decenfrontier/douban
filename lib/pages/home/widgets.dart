@@ -26,7 +26,7 @@ class HomeMovieItem extends StatelessWidget {
           SizedBox(
             height: 4,
           ),
-          Text("333"),
+          buildFooter(),
         ],
       ),
     );
@@ -179,6 +179,19 @@ class HomeMovieItem extends StatelessWidget {
             style: TextStyle(fontSize: 16, color: Colors.orangeAccent),
           )
         ],
+      ),
+    );
+  }
+
+  // 尾部
+  Widget buildFooter() {
+    return Container(
+      child: Text("${movieItem.originalTitle}"),
+      width: double.infinity,
+      padding: EdgeInsets.all(6),
+      decoration: BoxDecoration(
+        color: Color(0xffe2e2e2),
+        borderRadius: BorderRadius.circular(4),
       ),
     );
   }
