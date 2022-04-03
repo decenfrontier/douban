@@ -1,3 +1,4 @@
+import 'package:douban/widgets/dash_line.dart';
 import 'package:douban/widgets/star_rating.dart';
 import 'package:flutter/material.dart';
 
@@ -13,7 +14,7 @@ class HomeMovieItem extends StatelessWidget {
       padding: EdgeInsets.all(8),
       decoration: BoxDecoration(
           border:
-              Border(bottom: BorderSide(width: 8, color: Color(0xffdddddd)))),
+          Border(bottom: BorderSide(width: 8, color: Color(0xffdddddd)))),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
@@ -56,6 +57,10 @@ class HomeMovieItem extends StatelessWidget {
           width: 8,
         ),
         buildContentInfo(),
+        SizedBox(
+          width: 8,
+        ),
+        buildContentLine(),
       ],
     );
   }
@@ -75,19 +80,19 @@ class HomeMovieItem extends StatelessWidget {
   Widget buildContentInfo() {
     return Expanded(
         child: Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        buildContentInfoTitle(),
-        SizedBox(
-          height: 8,
-        ),
-        buildContentInfoRating(),
-        SizedBox(
-          height: 8,
-        ),
-        buildContentInfoDesc(),
-      ],
-    ));
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            buildContentInfoTitle(),
+            SizedBox(
+              height: 8,
+            ),
+            buildContentInfoRating(),
+            SizedBox(
+              height: 8,
+            ),
+            buildContentInfoDesc(),
+          ],
+        ));
   }
 
   // 内容-信息-标题
@@ -95,10 +100,10 @@ class HomeMovieItem extends StatelessWidget {
     return Text.rich(TextSpan(children: [
       WidgetSpan(
           child: Icon(
-        Icons.play_circle_outline,
-        color: Colors.redAccent,
-        size: 24,
-      )),
+            Icons.play_circle_outline,
+            color: Colors.redAccent,
+            size: 24,
+          )),
       TextSpan(
         text: "${movieItem.title}",
         style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
@@ -138,6 +143,19 @@ class HomeMovieItem extends StatelessWidget {
       "$generes / $directors / $actors",
       maxLines: 2,
       overflow: TextOverflow.ellipsis,
+    );
+  }
+
+  // 内容-竖线
+  Widget buildContentLine() {
+    return Container(
+      height: 100,
+      child: DashedLine(
+        axis: Axis.vertical,
+        dashedWidth: 1,
+        dashedHeight: 4,
+        count: 15,
+      ),
     );
   }
 }
