@@ -41,10 +41,14 @@ class _HomeContentState extends State<HomeContent> {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      child: Center(
-        child: Text("首页内容"),
-      ),
+    return ListView.builder(
+      itemCount: movies.length,
+      itemBuilder: (ctx, index) {
+        return ListTile(
+          title: Text("${movies[index].title}"),
+          leading: Image.network("${movies[index].imageURL}"),
+        );
+      },
     );
   }
 }
