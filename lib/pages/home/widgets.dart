@@ -1,3 +1,4 @@
+import 'package:douban/widgets/star_rating.dart';
 import 'package:flutter/material.dart';
 
 import '../../models/home_models.dart';
@@ -12,7 +13,7 @@ class HomeMovieItem extends StatelessWidget {
       padding: EdgeInsets.all(8),
       decoration: BoxDecoration(
           border:
-              Border(bottom: BorderSide(width: 8, color: Color(0xffdddddd)))),
+          Border(bottom: BorderSide(width: 8, color: Color(0xffdddddd)))),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
@@ -73,8 +74,13 @@ class HomeMovieItem extends StatelessWidget {
   // 内容-信息
   Widget buildContentInfo() {
     return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         buildContentInfoTitle(),
+        SizedBox(
+          height: 8,
+        ),
+        buildContentInfoRating(),
       ],
     );
   }
@@ -97,5 +103,23 @@ class HomeMovieItem extends StatelessWidget {
         style: TextStyle(color: Color(0xFF666666)),
       ),
     ]));
+  }
+
+  // 内容-信息-评分
+  Widget buildContentInfoRating() {
+    return Row(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        StarRating(
+          rating: movieItem.rating!,
+          size: 18,
+          selectedColor: Colors.orangeAccent,
+        ),
+        SizedBox(
+          width: 6,
+        ),
+        Text("${movieItem.rating}"),
+      ],
+    );
   }
 }
