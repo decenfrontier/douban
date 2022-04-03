@@ -16,10 +16,25 @@ class HomeMovieItem extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Text("111"),
+          buildHeader(),
           Text("222"),
           Text("333"),
         ],
+      ),
+    );
+  }
+
+  // 头部排名
+  Widget buildHeader() {
+    return Container(
+      padding: EdgeInsets.fromLTRB(10, 5, 10, 5),
+      decoration: BoxDecoration(
+        color: Color.fromARGB(255, 238, 205, 144),
+        borderRadius: BorderRadius.circular(4),
+      ),
+      child: Text(
+        "No.${movieItem.rank}",
+        style: TextStyle(fontSize: 14, color: Color.fromARGB(255, 131, 95, 36)),
       ),
     );
   }
