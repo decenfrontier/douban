@@ -129,19 +129,21 @@ class HomeMovieItem extends StatelessWidget {
 
   // 内容-信息-评分
   Widget buildContentInfoRating() {
-    return Row(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        StarRating(
-          rating: movieItem.rating!,
-          size: 18,
-          selectedColor: Colors.orangeAccent,
-        ),
-        SizedBox(
-          width: 6,
-        ),
-        Text("${movieItem.rating}"),
-      ],
+    return FittedBox(
+      child: Row(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          StarRating(
+            rating: movieItem.rating!,
+            size: 18,
+            selectedColor: Colors.orangeAccent,
+          ),
+          SizedBox(
+            width: 6,
+          ),
+          Text("${movieItem.rating}"),
+        ],
+      ),
     );
   }
 
